@@ -3,19 +3,12 @@ import cloudinary from "cloudinary";
 import { getDataUri } from "../utils/Features.js";
 export const registerController = async (req, res) => {
   try {
-    const { name, email, password, address, city, country, phone, answer } =
+    const { name, email, password, address, city, phone, country, answer } =
       req.body;
+
+    console.log({ r: req.body });
     // validation
-    if (
-      !name ||
-      !email ||
-      !password ||
-      !city ||
-      !address ||
-      !country ||
-      !phone ||
-      !answer
-    ) {
+    if (!(name || email || password || city || address || phone)) {
       return res.status(500).send({
         success: false,
         message: "Please Provide All Fields",
